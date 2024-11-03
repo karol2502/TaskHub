@@ -39,7 +39,7 @@ public static class CreateProject
             newProject.UserProjects.Add(new UserProject
             {
                 UserId = currentUser.Id,
-                Role = Role.Owner,
+                Role = Role.Admin,
             });
 
             await dbContext.Projects.AddAsync(newProject, cancellationToken);

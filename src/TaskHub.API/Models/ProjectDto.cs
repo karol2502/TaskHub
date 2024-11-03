@@ -1,5 +1,6 @@
 ﻿using Riok.Mapperly.Abstractions;
 using TaskHub.Entities;
+using TaskHub.Features.Projects;
 
 namespace TaskHub.Models;
 
@@ -17,5 +18,6 @@ public class ProjectDto
 public static partial class ProjectMapper
 {
     public static partial ProjectDto AsDto(this Project task);
+    public static partial void ApplyUpdate(UpdateProject.Command updateProject, Project project);
 }
 
