@@ -4,7 +4,7 @@ namespace TaskHub.Entities;
 
 public sealed class Task
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid Id { get; } = Guid.NewGuid();
     public string Name { get; set; } = default!;
     public string? Description { get; set; }
     public Status Status { get; set; }

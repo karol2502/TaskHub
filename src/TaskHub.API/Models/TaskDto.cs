@@ -1,5 +1,6 @@
 ﻿using Riok.Mapperly.Abstractions;
 using TaskHub.Common.Enums;
+using TaskHub.Entities;
 
 namespace TaskHub.Models;
 
@@ -16,5 +17,6 @@ public class TaskDto
 [Mapper]
 public static partial class TaskMapper
 {
-    public static partial TaskDto AsDto(this TaskHub.Entities.Task task);
+    public static partial TaskDto AsDto(this Entities.Task task);
+    public static partial List<TaskDto> AsDtos(this List<Entities.Task> tasks);
 }

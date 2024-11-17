@@ -20,7 +20,7 @@ builder.Services.AddSwaggerGen(c =>
         Type = SecuritySchemeType.Http,
         Scheme = "Bearer"
     });
-
+    c.CustomSchemaIds(type => type.ToString());
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
             {
                 {
@@ -33,6 +33,7 @@ builder.Services.AddSwaggerGen(c =>
             });
 });
 
+builder.Services.AddScoped<ErrorHandlingMiddleware>();
 builder.Services.AddScoped<IUserContext, UserContext>();
 
 builder.Services
@@ -74,7 +75,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapIdentityApi<User>();
+app.MapGroup("api/identity")
+   .WithTags("Identity")
+   .MapIdentityApi<User>();
 
 app.UseAuthorization();
 
